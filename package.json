@@ -1,14 +1,15 @@
 {
   "name": "nappd",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Allows daemon-like starting and stopping of local nodejs apps",
-  "main": "./bin/napp",
-  "bin": {
-    "nappd": "./bin/nappd"
-  },
+  "main": "./bin/nappd",
+  "bin": "./bin/nappd",
   "scripts": {
-    "start": "node ./bin/napp",
+    "start": "node ./bin/nappd",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines":{
+    "node": "*"
   },
   "repository": {
     "type": "git",
