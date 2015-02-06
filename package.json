@@ -1,5 +1,5 @@
 {
-  "name": "napp",
+  "name": "nappd",
   "version": "0.0.1",
   "description": "Allows daemon-like starting and stopping of local nodejs apps",
   "main": "bin/napp",
