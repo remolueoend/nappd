@@ -1,0 +1,25 @@
+{
+  "name": "napp",
+  "version": "0.0.1",
+  "description": "Allows daemon-like starting and stopping of local nodejs apps",
+  "main": "napp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/remolueoend/napp.git"
+  },
+  "keywords": [
+    "nodejs",
+    "daemon"
+  ],
+  "author": "Remo Lueoend <remo.zumsteg@outlook.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/remolueoend/napp/issues"
+  },
+  "dependencies": {
+    "daemonize2": "~0.4.2"
+  }
+}
