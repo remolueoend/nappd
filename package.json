@@ -2,8 +2,9 @@
   "name": "napp",
   "version": "0.0.1",
   "description": "Allows daemon-like starting and stopping of local nodejs apps",
-  "main": "napp.js",
+  "main": "bin/napp",
   "scripts": {
+    "start": "node bin/napp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
