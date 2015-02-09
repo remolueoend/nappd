@@ -4,4 +4,4 @@
  * Created by rzu on 06.02.2015.
  */
 
-require('../lib/nappd');
+module.exports = require('../lib/nappd');

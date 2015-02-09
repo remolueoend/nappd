@@ -1,11 +1,11 @@
 {
   "name": "nappd",
-  "version": "0.0.7",
+  "version": "0.0.19",
   "description": "Allows daemon-like starting and stopping of local nodejs apps",
   "main": "bin/nappd",
   "scripts": {
     "start": "node bin/nappd",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodeunit"
   },
   "engines": {
     "node": "*"
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "daemonize2": "~0.4.2",
-    "deferred": "^0.7.2"
+    "deferred": "^0.7.2",
+    "mkdirp": "^0.5.0"
   }
 }
