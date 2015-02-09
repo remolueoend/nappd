@@ -1,14 +1,13 @@
 {
   "name": "nappd",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Allows daemon-like starting and stopping of local nodejs apps",
-  "main": "./bin/nappd",
-  "bin": "./bin/nappd",
+  "main": "bin/nappd",
   "scripts": {
-    "start": "node ./bin/nappd",
+    "start": "node bin/nappd",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines":{
+  "engines": {
     "node": "*"
   },
   "repository": {
@@ -25,6 +24,7 @@
     "url": "https://github.com/remolueoend/napp/issues"
   },
   "dependencies": {
+    "commander": "^2.6.0",
     "daemonize2": "~0.4.2"
   }
 }
