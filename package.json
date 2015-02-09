@@ -1,6 +1,6 @@
 {
   "name": "nappd",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Allows daemon-like starting and stopping of local nodejs apps",
   "main": "bin/nappd",
   "scripts": {
@@ -24,7 +24,7 @@
     "url": "https://github.com/remolueoend/napp/issues"
   },
   "dependencies": {
-    "commander": "^2.6.0",
-    "daemonize2": "~0.4.2"
+    "daemonize2": "~0.4.2",
+    "deferred": "^0.7.2"
   }
 }
