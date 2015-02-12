@@ -29,5 +29,4 @@ describe('updateApp', function(){
             }, done);
         }, done);
     });
-
 });
