@@ -7,6 +7,9 @@ describe('removeApp', function(){
     before(function(){
         return config.deleteConfig();
     });
+    after(function(){
+        return config.deleteConfig();
+    });
 
     var app = 'config_removeApp_name',
         path = 'config_removeApp_path';
@@ -24,4 +27,9 @@ describe('removeApp', function(){
         }, done);
     });
 
+    it('should reject if the app is not registered', function(done){
+        config.removeApp('not_existing_app', path)(function(){
+            done(new Error('Not rejected.'));
+        }, function(err){ done(); })
+    });
 });
