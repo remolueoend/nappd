@@ -1,5 +1,5 @@
 
-var config = require('../../lib/config');
+var config = require('../../lib/config')('apps.tests.getApp.json');
 
 describe('getApp', function(){
 
@@ -7,11 +7,9 @@ describe('getApp', function(){
         path = 'config_getApp_path';
 
     before(function(done){
-        config.deleteConfig()(function(){
-            config.addApp(app, path)(function(){
-                done();
-            }, function(err){ done(err); });
-        }, function(err){ done(err); });
+        config.addApp(app, path)(function(){
+            done();
+        }, done);
     });
 
     after(function(){
@@ -25,17 +23,18 @@ describe('getApp', function(){
             }else{
                 done(new Error('Got wrong app config:' + JSON.stringify(a)));
             }
-        }, function(err){
-            done(err);
-        });
+        }, done);
     });
 
     it('should reject if no app with the specified name exists', function(done){
         config.getApp('not_registered_app')(function(){
             done(new Error('Resolved not registered app'));
-        }, function (err){
-            done();
-        })
+        }, function(err){ done(); });
     });
 
+    it('should reject if no app name was provided', function(done){
+        config.getApp(void 0)(function(){
+            done(new Error('Did not reject.'));
+        }, function(err){ done(); });
+    });
 });
