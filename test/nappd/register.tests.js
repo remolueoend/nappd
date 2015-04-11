@@ -22,7 +22,7 @@ describe('register', function(){
 
     it('should add an app to the registered daemons', function(done){
         nappd.register(app, testAppPath)(function(){
-            nappd.get(app)(function(app){
+            nappd.fromRegisteredApp(app)(function(app){
                 done();
             }, done);
         }, done);
@@ -39,7 +39,7 @@ describe('register', function(){
     it('should overwrite the options if overwrite is set to true', function(done){
         nappd.register(app, testAppPath)(function(){
             nappd.register(app, testAppPath, testAppOut, true)(function(){
-                nappd.get(app)(function(a){
+                nappd.fromRegisteredApp(app)(function(a){
                     if(a.output === testAppOut) done();
                     else done(new Error('App was not updated correctly.'));
                 }, done)

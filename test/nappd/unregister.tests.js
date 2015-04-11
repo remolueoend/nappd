@@ -24,7 +24,7 @@ describe('unregister', function(){
 
     it('should remove a registered app', function(done){
         nappd.unregister(app)(function(){
-            nappd.get(app)(function(){
+            nappd.fromRegisteredApp(app)(function(){
                 done(new Error('App was not removed.'));
             }, function(){ done(); });
         }, done);
