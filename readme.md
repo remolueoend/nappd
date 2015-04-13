@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/remolueoend/nappd.svg?branch=master)](https://travis-ci.org/remolueoend/nappd)
+[![Build Status](https://travis-ci.org/remolueoend/nappd.svg?branch=master)](https://travis-ci.org/remolueoend/nappd) [![npm version](https://badge.fury.io/js/nappd.svg)](http://badge.fury.io/js/nappd)
 
 # nappd
 nappd stands for node app daemon and can be used to create app daemons running in the background from any NodeJS script.
