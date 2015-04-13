@@ -11,6 +11,10 @@ Registering an app together with its config makes the handling of its daemon muc
 After an app was registered with a unique app name, The daemon and the app's configuration can be received at any time by simply providing the app's unique name.
 The apps' configuration will be saved in a JSON based file. The default location is: ```nappd_module_folder/cfg/apps.json```. This location can be overwritten at any time (See [Usage](https://github.com/remolueoend/nappd#usage))
 
+## Output (stdout / stderr)
+Because all nappd daemons are running in the background, the app's console output won't be visible anymore.
+nappd allows redirecting the console output (stdout and stderr) to an output file at any given location.
+
 ## Installation
 ```
 npm install nappd [--save]
@@ -22,7 +26,8 @@ npm install nappd [--save]
 var nappd = require('nappd');
 
 // Returns a new nappd instance with a custom config location.
-// The path can be absolute or relative to the current working directory:
+// The path can be absolute or relative to the current working directory.
+// If the pat does not exist, it will be created recursively:
 var nappd = require('nappd')('path/to/config.json');
 
 require('nappd') === require('nappd')       // true
@@ -31,7 +36,7 @@ require('nappd') === require('nappd')()     // false
 require('nappd').config.cfgPath === require('nappd')().config.cfgPath   // true
 ```
 
-## Module Methods
+## Nappd Methods
 All public methods provided by nappd (except ```nappd.isDaemon```) return a promise object as defined in https://www.npmjs.com/package/deferred.  
 
 ### fromAppPath
@@ -72,3 +77,42 @@ Returns if the specified object is a daemon instance:
 var isDaemon = nappd.isDaemon(instance); 
 ```
 * ```instance```: The object to test.
+
+## Nappd Properties
+* ```nappd.config```: The current configuration instance used to manage registered apps.
+
+## Daemon Methods
+Once a daemon was created from an app (see nappd.fromAppPath or nappd.fromRegisteredApp), it provides following methods:
+
+### start
+Starts the app of the daemon and returns a promise resolving the app's curent process ID (PID):
+```javascript
+daemon.start([args]).then(function(pid){}, function(err){});;
+```
+* ```args```: Optional array of start arguments which will be passed to the script.
+
+### stop
+Stops the app of the daemon and returns a promise resolving the app's original process ID (PID):
+```javascript
+daemon.stop().then(function(pid){}, function(err){});
+```
+
+### kill
+Kills the app of the daemon and returns a promise resolving the app's original process ID (PID):
+```javascript
+daemon.kill().then(function(pid){}, function(err){});
+```
+
+### status
+Returns a promise resolving the app's PID or rejects if the app is currently not running:
+```javascript
+daemon.status().then(function(pid){}, function(err){});
+```
+
+### unregister
+Unregisters the daemon:
+```javascript
+daemon.unregister().then(function(){}, function(err){});
+```
+
+### tail
