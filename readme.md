@@ -82,12 +82,12 @@ var isDaemon = nappd.isDaemon(instance);
 * ```nappd.config```: The current configuration instance used to manage registered apps.
 
 ## Daemon Methods
-Once a daemon was created from an app (see nappd.fromAppPath or nappd.fromRegisteredApp), it provides following methods:
+Once a daemon was created from an app (see ```nappd.fromAppPath``` or ```nappd.fromRegisteredApp```), it provides following methods:
 
 ### start
-Starts the app of the daemon and returns a promise resolving the app's curent process ID (PID):
+Starts the app of the daemon and returns a promise resolving the app's current process ID (PID):
 ```javascript
-daemon.start([args]).then(function(pid){}, function(err){});;
+daemon.start([args]).then(function(pid){}, function(err){});
 ```
 * ```args```: Optional array of start arguments which will be passed to the script.
 
@@ -116,3 +116,31 @@ daemon.unregister().then(function(){}, function(err){});
 ```
 
 ### tail
+Tails the output file of the daemon's app. If no output is defined, an exception will be thrown. To check whether an output is defined or not, check if the property ```daemon.output``` is set.
+This function returns a function which can be called to stop tailing the file.
+Signature:
+```javascript
+var handler = daemon.tail(callback);
+
+// stop tailing:
+handler();
+```
+* ```callback (function(err, line){})```: A function which gets called for each new line created in the output file or whenever an error during the tailing occurs.
+
+### on
+Adds a listener to the specified event and returns a removal function:
+```javascript
+var handler = daemon.on(eventName, handler);
+
+// remove the handler:
+handler();
+```
+* ```eventName```: The name of the event.
+* ```handler```: The listener function to be called. The signature may vary from event to event. See [Events](https://github.com/remolueoend/nappd#events) for more details.
+
+### trigger
+Triggers the specified event by calling all attached listeners. Use this method with caution, because the event system is used internally too. 
+```javascript
+daemon.trigger(eventName);
+```
+* ```eventName```: The name of the event to trigger.
