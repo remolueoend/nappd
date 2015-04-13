@@ -128,7 +128,7 @@ handler();
 * ```callback (function(err, line){})```: A function which gets called for each new line created in the output file or whenever an error during the tailing occurs.
 
 ### on
-Adds a listener to the specified event and returns a removal function:
+Adds a listener to the specified event and returns the new listener instance (See [Daemon Events](https://github.com/remolueoend/nappd#events) for more details).
 ```javascript
 var handler = daemon.on(eventName, handler);
 
@@ -136,7 +136,7 @@ var handler = daemon.on(eventName, handler);
 handler();
 ```
 * ```eventName```: The name of the event.
-* ```handler```: The listener function to be called. The signature may vary from event to event. See [Events](https://github.com/remolueoend/nappd#events) for more details.
+* ```handler```: The listener function to be called. The signature may vary from event to event. See [Daemon Events](https://github.com/remolueoend/nappd#events) for more details.
 
 ### trigger
 Triggers the specified event by calling all attached listeners. Use this method with caution, because the event system is used internally too. 
@@ -144,3 +144,25 @@ Triggers the specified event by calling all attached listeners. Use this method 
 daemon.trigger(eventName);
 ```
 * ```eventName```: The name of the event to trigger.
+
+## Daemon Properties
+* ```daemon.name```: The name of the daemon. This is rather the unique name of a registered app or the name of an app's executable file.
+* ```daemon.path```: The full path to the daemon's app's executable file.
+* ```daemon.output```: The path to the app's output file.
+* ```events```: Internal collection of events and their listeners. Use ```daemon.on``` and ```daemon.trigger``` to manage events.
+
+## Daemon Events
+This paragraph shows all available default events and the signature of the listener calls.
+The first parameter of the handler's call is always a reference to the event listener which has following attributes:
+* ```id```: The listener ID applied by its registration.
+* ```event```: The name of the event this listener is applied to.
+* ```handler```: A reference to the listener's function.
+* ```remove```: A function which can be called to remove the listener from the event.
+
+######Default Events:
+* ```starting```: As soon as the daemon's app is trying to start up: ```function(listener){}```.
+* ```started```: When the app started successfully: ```function(listener, pid){}```.
+* ```stopping```: When the app got the signal to stop: ```function(listener){}```.
+* ```stopped```: When the app's process was stopped successfully: ```function(listener, pid){}```.
+* ```error```: Everytime an error occurrs while trying to start or stop the app's process: ```function(listener, err){}```
+
