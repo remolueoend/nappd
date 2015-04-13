@@ -130,10 +130,10 @@ handler();
 ### on
 Adds a listener to the specified event and returns the new listener instance (See [Daemon Events](https://github.com/remolueoend/nappd#daemon-events) for more details).
 ```javascript
-var handler = daemon.on(eventName, handler);
+var listener = daemon.on(eventName, handler);
 
-// remove the handler:
-handler();
+// remove the listener:
+listener.remove();
 ```
 * ```eventName```: The name of the event.
 * ```handler```: The listener function to be called. The signature may vary from event to event. See [Daemon Events](https://github.com/remolueoend/nappd#daemon-events) for more details.
@@ -160,7 +160,7 @@ The first parameter of a handler's call is always a reference to the event liste
 * ```handler```: A reference to the listener's function.
 * ```remove```: A function which can be called to remove the listener from the event.
 
-######Default Events:
+###### Default Events:
 * ```starting```: As soon as the daemon's app is trying to start up: ```function(listener){}```.
 * ```started```: When the app started successfully: ```function(listener, pid){}```.
 * ```stopping```: When the app got the signal to stop: ```function(listener){}```.
