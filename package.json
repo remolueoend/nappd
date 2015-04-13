@@ -1,6 +1,6 @@
 {
   "name": "nappd",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Allows daemon-like starting and stopping of local nodejs apps",
   "main": "bin/nappd",
   "scripts": {
