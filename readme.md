@@ -9,7 +9,7 @@ If you wish to manage your NodeJS app daemons straight from your terminal, have 
 ## Registration
 Registering an app together with its config makes the handling of its daemon much easier.
 After an app was registered with a unique app name, The daemon and the app's configuration can be received at any time by simply providing the app's unique name.
-The apps' configuration will be saved in a JSON based file. The default location is: ```nappd_module_folder/cfg/apps.json```. This location can be overwritten at any time (See [Usage](https://github.com/remolueoend/nappd-cli#usage))
+The apps' configuration will be saved in a JSON based file. The default location is: ```nappd_module_folder/cfg/apps.json```. This location can be overwritten at any time (See [Usage](https://github.com/remolueoend/nappd#usage))
 
 ## Installation
 ```
