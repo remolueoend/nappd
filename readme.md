@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/remolueoend/nappd.svg?branch=master)](https://travis-ci.org/remolueoend/nappd)
 [![npm version](https://badge.fury.io/js/nappd.svg)](http://badge.fury.io/js/nappd)
+[![Build Status](https://travis-ci.org/remolueoend/nappd.svg?branch=master)](https://travis-ci.org/remolueoend/nappd)
 [![Dependencies](https://david-dm.org/remolueoend/nappd.svg)](https://david-dm.org/remolueoend/nappd)
 
 # nappd
