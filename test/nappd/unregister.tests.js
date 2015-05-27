@@ -1,7 +1,7 @@
 
 var nappd = require('../../lib/nappd'),
     path = require('path'),
-    testAppPath = path.join(__dirname, '../../node_modules/daemonize2/examples', 'testApp.js');
+    c = require('../constants')();
 
 describe('unregister', function(){
 
@@ -11,7 +11,7 @@ describe('unregister', function(){
         nappd.unregister(app)(done, function(){ done(); });
     }
     function register(done){
-        nappd.register(app, testAppPath)(done, function(){ done(); });
+        nappd.register(app, c.appPath)(done, function(){ done(); });
     }
 
     beforeEach(function(done){

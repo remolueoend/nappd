@@ -27,9 +27,11 @@
     "daemonize2": "git+https://github.com/remolueoend/node-daemonize2.git",
     "deferred": "^0.7.2",
     "mkdirp": "^0.5.0",
+    "ontrigger": "git+https://github.com/remolueoend/ontriggerJS.git",
     "tail": "^0.4.0"
   },
   "devDependencies": {
+    "extend": "^2.0.1",
     "should": "^5.0.0"
   }
 }

@@ -1,8 +1,7 @@
 
 var nappd = require('../../lib/nappd'),
     path = require('path'),
-    testAppPath = path.join(__dirname, '../../node_modules/daemonize2/examples', 'testApp.js'),
-    testAppOut = path.join(__dirname, '../../node_modules/daemonize2/examples', 'testApp.out');
+    c = require('../constants')();
 
 describe('register', function(){
 
@@ -21,7 +20,7 @@ describe('register', function(){
     });
 
     it('should add an app to the registered daemons', function(done){
-        nappd.register(app, testAppPath)(function(){
+        nappd.register(app, c.appPath)(function(){
             nappd.fromRegisteredApp(app)(function(app){
                 done();
             }, done);
@@ -29,18 +28,18 @@ describe('register', function(){
     });
 
     it('should reject if the app already exists', function(done){
-        nappd.register(app, testAppPath)(function(){
-            nappd.register(app, testAppPath)(function(){
+        nappd.register(app, c.appPath)(function(){
+            nappd.register(app, c.appPath)(function(){
                 done(new Error('Did not reject.'));
             }, function(){ done(); });
         }, done)
     });
 
     it('should overwrite the options if overwrite is set to true', function(done){
-        nappd.register(app, testAppPath)(function(){
-            nappd.register(app, testAppPath, testAppOut, true)(function(){
+        nappd.register(app, c.appPath)(function(){
+            nappd.register(app, c.appPath, c.appOut, true)(function(){
                 nappd.fromRegisteredApp(app)(function(a){
-                    if(a.output === testAppOut) done();
+                    if(a.output === c.appOut) done();
                     else done(new Error('App was not updated correctly.'));
                 }, done)
             }, done);
@@ -48,7 +47,7 @@ describe('register', function(){
     });
 
     it('should reject if the app name is missing', function(done){
-        nappd.register(void 0, testAppPath)(function(){
+        nappd.register(void 0, c.appPath)(function(){
             done(new Error('Did not reject.'));
         }, function(){ done(); })
     });

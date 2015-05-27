@@ -1,14 +1,13 @@
 var nappd = require('../../lib/nappd'),
     path = require('path'),
-    testAppPath = path.join(__dirname, '../../node_modules/daemonize2/examples', 'testApp.js'),
-    testAppOut = path.join(__dirname, '../../node_modules/daemonize2/examples', 'testApp.out'),
+    c = require('../constants')(),
     app = 'nappd_fromRegisteredApp_name';
 
     function unregister(done){
         nappd.unregister(app)(done, function(){ done(); });
     }
     function register(){
-        return nappd.register(app, testAppPath, testAppOut);
+        return nappd.register(app, c.appPath, c.appOut);
     }
 
 describe('fromRegisteredApp', function(){
